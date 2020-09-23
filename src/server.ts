@@ -5,6 +5,7 @@ import logsMiddleware from './middlewares/logs';
 
 const app = express();
 app.use(express.json());
+
 app.use(logsMiddleware);
 app.use(routes);
 

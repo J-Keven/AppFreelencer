@@ -52,8 +52,6 @@ const SignIn: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
-
-        console.log('osjdji');
         await createAccount(data);
       } catch (error) {
         if (error instanceof Yup.ValidationError) {

@@ -6,7 +6,7 @@ import Dashboard from '../pages/Dashboard';
 const App = createStackNavigator();
 const AppRoutes: React.FC = () => (
   <NavigationContainer>
-    <App.Navigator initialRouteName="Home">
+    <App.Navigator initialRouteName="Home" headerMode="none">
       <App.Screen name="Home" component={Dashboard} />
     </App.Navigator>
   </NavigationContainer>

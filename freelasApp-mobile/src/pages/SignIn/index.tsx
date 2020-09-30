@@ -1,89 +1,125 @@
-import React, { useCallback, useRef,useState }from 'react';
-import { ImageBackground, TextInput, ScrollView } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
-import { FormHandles } from '@unform/core'
-import Input from '../../components/Input'
-import Button from '../../components/Button'
-import Feather from 'react-native-vector-icons/Feather'
-import BackgroundImage from '../../assets/backgroung.png'
+import React, { useCallback, useRef, useState, useContext } from 'react';
+import { ImageBackground, TextInput, ScrollView, Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { FormHandles } from '@unform/core';
+import Feather from 'react-native-vector-icons/Feather';
+import * as Yup from 'yup';
+import Input from '../../components/Input';
+import Button from '../../components/Button';
+import { useAuth } from '../../hooks/Auth';
+import formatErrorsValidate from '../../utils/formatErrorValidate';
+import backgroundImage from '../../assets/backgroung.png';
 
-import { 
-  Container, 
-  Title, 
-  Form, 
+import {
+  Container,
+  Title,
+  Form,
   BlurContainer,
   ButtonGoBackSignin,
-  ButtonGoBackSigninText
-} from './styles'
+  ButtonGoBackSigninText,
+} from './styles';
+
+interface UserCredentils {
+  email: string;
+  password: string;
+}
 
 const SignIn: React.FC = () => {
-
   const formRef = useRef<FormHandles>(null);
   const navigate = useNavigation();
-  const InputLastNameRef = useRef<TextInput>(null);
   const InputEmailRef = useRef<TextInput>(null);
   const InputPasswordRef = useRef<TextInput>(null);
 
-  const handleSubmitForm = useCallback((data: object) => {
-    console.log(data)
-  },[])
+  const { signin } = useAuth();
+  const handleSubmitForm = useCallback(
+    async (data: UserCredentils) => {
+      try {
+        formRef.current?.setErrors({});
+
+        const schema = Yup.object().shape({
+          email: Yup.string()
+            .email('Email Inválido')
+            .required('Email obrigatório'),
+          password: Yup.string().required('Password obrigatório'),
+        });
+
+        await schema.validate(data, {
+          abortEarly: false,
+        });
+
+        await signin(data);
+
+        // navigate.navigate()
+      } catch (error) {
+        if (error instanceof Yup.ValidationError) {
+          const errorFormatted = formatErrorsValidate(error);
+          formRef.current?.setErrors(errorFormatted);
+        } else {
+          Alert.alert(
+            'Erro ao fazer login',
+            'Ocorreu um erro ao fazer seu login, por faver cheque suas credencias e tente novamenet',
+          );
+        }
+      }
+    },
+    [signin],
+  );
 
   return (
-      <Container>
-        <ScrollView
-          keyboardShouldPersistTaps='handled' 
-          style={{width: '100%'}}
-          showsVerticalScrollIndicator={false}
-        >
-
-        <ImageBackground 
-          source={BackgroundImage} 
+    <Container>
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        style={{ width: '100%' }}
+        showsVerticalScrollIndicator={false}
+      >
+        <ImageBackground
+          source={backgroundImage}
           style={{
             flex: 1,
             width: '100%',
-            alignItems: "center",
+            alignItems: 'center',
           }}
         >
-          <BlurContainer  blurType="light">    
-            <Form  ref={formRef} onSubmit={handleSubmitForm}>
+          <BlurContainer blurType="light" blurAmount={25}>
+            <Form ref={formRef} onSubmit={handleSubmitForm}>
               <Title>Faça seu login</Title>
-              <Input 
+              <Input
                 ref={InputEmailRef}
-                name="email" 
-                icon="mail" 
+                name="email"
+                icon="mail"
                 placeholder="E-mail"
                 autoCapitalize="none"
                 autoCorrect={false}
                 autoCompleteType="email"
                 keyboardType="email-address"
-                returnKeyType='next'
+                returnKeyType="next"
                 onSubmitEditing={() => InputPasswordRef.current?.focus()}
               />
-              <Input 
+              <Input
                 ref={InputPasswordRef}
-                name="password" 
-                icon="lock" 
+                name="password"
+                icon="lock"
                 placeholder="Senha"
                 autoCapitalize="none"
                 autoCorrect={false}
                 autoCompleteType="off"
                 secureTextEntry
-                returnKeyType='send'
+                returnKeyType="send"
                 onSubmitEditing={() => formRef.current?.submitForm()}
               />
             </Form>
           </BlurContainer>
-            <Button  onPress={() => formRef.current?.submitForm()}>
+          <Button onPress={() => formRef.current?.submitForm()}>
             Cadastrar
-            </Button>
+          </Button>
           <ButtonGoBackSignin onPress={() => navigate.navigate('SignUp')}>
             <ButtonGoBackSigninText>Criar uma conta</ButtonGoBackSigninText>
-            <Feather name='log-out' size={22} color="#120E21"/>
+            <Feather name="log-out" size={22} color="#120E21" />
           </ButtonGoBackSignin>
         </ImageBackground>
-        </ScrollView>
-      </Container>
-  )
-}
+      </ScrollView>
+    </Container>
+  );
+};
 
 export default SignIn;

@@ -1,7 +1,6 @@
 import { getRepository } from 'typeorm';
-import jwt from 'jsonwebtoken';
 import Users from '../models/Users';
-import tokenConfigs from '../configs/token';
+import Token from './utils/Token';
 
 interface IRequestDTO {
   email: string;
@@ -23,16 +22,11 @@ class AutheticatedServece {
     if (!user || user.password !== password) {
       throw new Error('Incorrect Email/Password combination');
     }
+    const tokenUtils = new Token();
 
-    const { expiresIn, secretKey } = tokenConfigs;
-
-    const token = jwt.sign({}, secretKey, {
-      subject: user.id,
-      expiresIn,
-    });
+    const token = await tokenUtils.create(user);
 
     delete user.password;
-
     return {
       user,
       token,

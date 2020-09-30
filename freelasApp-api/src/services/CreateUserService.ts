@@ -1,5 +1,6 @@
 import { getRepository } from 'typeorm';
 import Users from '../models/Users';
+import Token from './utils/Token';
 
 interface IRequestDTO {
   firstName: string;
@@ -7,9 +8,13 @@ interface IRequestDTO {
   email: string;
   password: string;
 }
+interface IResponseDTO {
+  user: Users;
+  token: string;
+}
 
 class CreateUserServece {
-  public async execute(userData: IRequestDTO): Promise<Users> {
+  public async execute(userData: IRequestDTO): Promise<IResponseDTO> {
     const { email } = userData;
     const userRepository = getRepository(Users);
 
@@ -24,8 +29,17 @@ class CreateUserServece {
     const user = userRepository.create(userData);
 
     await userRepository.save(user);
+
+    const tokenUtils = new Token();
+
+    const token = await tokenUtils.create(user);
+
     delete user.password;
-    return user;
+
+    return {
+      user,
+      token,
+    };
   }
 }
 

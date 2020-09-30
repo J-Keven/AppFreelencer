@@ -1,6 +1,7 @@
 import { getRepository } from 'typeorm';
+import { injectable, inject } from 'tsyringe';
 import Users from '../models/Users';
-import Token from './utils/Token';
+import ITokenProvider from '../providers/TokenProvider/model/ITokenProvider';
 
 interface IRequestDTO {
   email: string;
@@ -12,7 +13,17 @@ interface IResponse {
   token: string;
 }
 
+@injectable()
 class AutheticatedServece {
+  private tokenProvider: ITokenProvider;
+
+  constructor(
+    @inject('TokenProvider')
+    tokenProvider: ITokenProvider,
+  ) {
+    this.tokenProvider = tokenProvider;
+  }
+
   public async execute({ email, password }: IRequestDTO): Promise<IResponse> {
     const userRepository = getRepository(Users);
     const user = await userRepository.findOne({
@@ -22,11 +33,11 @@ class AutheticatedServece {
     if (!user || user.password !== password) {
       throw new Error('Incorrect Email/Password combination');
     }
-    const tokenUtils = new Token();
 
-    const token = await tokenUtils.create(user);
+    const token = await this.tokenProvider.generete(user);
 
     delete user.password;
+
     return {
       user,
       token,

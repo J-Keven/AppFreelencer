@@ -1,6 +1,7 @@
 import { getRepository } from 'typeorm';
+import { injectable, inject } from 'tsyringe';
 import Users from '../models/Users';
-import Token from './utils/Token';
+import ITokenProvider from '../providers/TokenProvider/model/ITokenProvider';
 
 interface IRequestDTO {
   firstName: string;
@@ -12,8 +13,17 @@ interface IResponseDTO {
   user: Users;
   token: string;
 }
-
+@injectable()
 class CreateUserServece {
+  private tokenProvider: ITokenProvider;
+
+  constructor(
+    @inject('TokenProvider')
+    tokenProvider: ITokenProvider,
+  ) {
+    this.tokenProvider = tokenProvider;
+  }
+
   public async execute(userData: IRequestDTO): Promise<IResponseDTO> {
     const { email } = userData;
     const userRepository = getRepository(Users);
@@ -30,9 +40,7 @@ class CreateUserServece {
 
     await userRepository.save(user);
 
-    const tokenUtils = new Token();
-
-    const token = await tokenUtils.create(user);
+    const token = await this.tokenProvider.generete(user);
 
     delete user.password;
 

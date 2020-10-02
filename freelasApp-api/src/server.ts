@@ -2,6 +2,7 @@ import express from 'express';
 import routes from './routes';
 import './database';
 import logsMiddleware from './middlewares/logs';
+import './container';
 
 const app = express();
 app.use(express.json());

@@ -62,6 +62,8 @@ const SignIn: React.FC = () => {
             'Erro ao Criar a Conta.',
             'Ocorreu um erro ao criar sua conta, tente novamente.',
           );
+
+          console.log(error);
         }
       }
     },

@@ -1,5 +1,11 @@
 import React, { useCallback, useRef } from 'react';
-import { ImageBackground, TextInput, ScrollView, Alert } from 'react-native';
+import {
+  ImageBackground,
+  TextInput,
+  ScrollView,
+  Alert,
+  NativeAppEventEmitter,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { FormHandles } from '@unform/core';
 import Feather from 'react-native-vector-icons/Feather';
@@ -53,6 +59,7 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
         await createAccount(data);
+        navigate.goBack();
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           const errorFormatted = formatErrorValidate(error);
@@ -62,8 +69,6 @@ const SignIn: React.FC = () => {
             'Erro ao Criar a Conta.',
             'Ocorreu um erro ao criar sua conta, tente novamente.',
           );
-
-          console.log(error);
         }
       }
     },

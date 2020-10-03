@@ -1,73 +1,66 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  background-color: #ffffff;
-  margin-bottom: 50px;
-  margin-top: 10px;
-  border-radius: 8px;
-  /* padding: 16px; */
+export const Conatiner = styled.View`
+  flex: 1;
+  background-color: #faf7fe;
 `;
 export const Header = styled.View`
+  background-color: #fffff9;
   padding: 0 16px;
-  height: 73.83px;
-  background-color: #efedf0;
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
-  flex-direction: row;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+`;
+export const GobackButton = styled.TouchableOpacity`
+  margin-top: 30px;
   align-items: center;
-  justify-content: space-between;
+  flex-direction: row;
 `;
 
-export const UserInfo = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const MakeProposal = styled.TouchableOpacity`
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-`;
-export const MakeProposalText = styled.Text``;
-
-export const Name = styled.Text`
-  margin-left: 10px;
+export const GobackButtonText = styled.Text`
   font-family: 'RedHatDisplay-Medium';
-  font-size: 20px;
-  line-height: 26px;
-  color: #120e21;
-`;
-export const Content = styled.View`
-  margin-top: 10px;
-  padding: 0 16px;
-`;
-export const DatePostade = styled.Text`
-  font-family: 'PublicSans-Regular';
-  font-size: 12.8px;
-  line-height: 20px;
+  font-size: 18px;
+  line-height: 24px;
   color: #99879d;
+  margin-left: 8px;
 `;
-export const Title = styled.Text`
-  margin-top: 16px;
+
+export const HeaderUser = styled.View`
+  margin-top: 35px;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 31px;
+`;
+export const HeaderUserName = styled.Text`
+  margin-left: 10px;
   font-family: 'RedHatDisplay-Bold';
   font-size: 25px;
   line-height: 33px;
   color: #120e21;
 `;
-export const DescriptionContainer = styled.View``;
-export const DescriptrionTitle = styled.Text`
-  margin-top: 16px;
-  font-family: 'RedHatDisplay-Medium';
-  font-size: 20px;
-  line-height: 26px;
+export const Content = styled.View`
+  padding: 0 16px;
+  margin-bottom: 30px;
+`;
+export const DatePostade = styled.Text`
+  margin-top: 10px;
+  font-family: 'PublicSans-Regular';
+  font-size: 12.8px;
+  line-height: 20px;
+  color: #99879d;
+`;
+
+export const ContentTitle = styled.Text`
+  margin-top: 5px;
+  font-family: 'RedHatDisplay-Bold';
+  font-size: 25px;
+  line-height: 33px;
   color: #120e21;
 `;
-export const DecriptionContent = styled.Text`
-  margin-top: 5px;
+export const ContentDescription = styled.Text`
+  margin-top: 16px;
   font-family: 'PublicSans-Regular';
   font-size: 16px;
-  line-height: 23px;
+  line-height: 26px;
   color: #99879d;
 `;
 export const DescriptionFooter = styled.View`
@@ -89,6 +82,15 @@ export const Price = styled.Text`
   color: #9378ff;
 `;
 export const CategoriesContainer = styled.View`
+  padding: 0 16px;
   flex-direction: row;
   margin: 18px 0;
+`;
+
+export const MakeProposal = styled.View`
+  padding: 0 16px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 90px;
 `;

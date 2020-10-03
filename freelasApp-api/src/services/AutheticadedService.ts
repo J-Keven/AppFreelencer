@@ -30,7 +30,10 @@ class AutheticatedServece {
       where: { email },
     });
 
-    if (!user || user.password !== password) {
+    if (!user) {
+      throw new Error('Incorrect Email/Password combination');
+    }
+    if (user.password !== password) {
       throw new Error('Incorrect Email/Password combination');
     }
 

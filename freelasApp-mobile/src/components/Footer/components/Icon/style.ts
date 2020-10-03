@@ -4,8 +4,6 @@ import Feather from 'react-native-vector-icons/Feather';
 interface IIconFeatherProps {
   isTheRoute: boolean;
 }
-
-export const Container = styled.TouchableOpacity``;
 export const IconFeather = styled(Feather)<IIconFeatherProps>`
   color: rgba(147, 120, 255, 0.4);
 

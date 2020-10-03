@@ -17,34 +17,34 @@ import Footer from '../../components/Footer';
 const Dashboard: React.FC = () => {
   return (
     <>
-      <Container>
-        <Header>
-          <Title>Search</Title>
-          <Search>
-            <Input
-              autoCorrect={false}
-              autoCapitalize="words"
-              autoCompleteType="off"
-            />
-            <Feacther name="search" size={20} />
-          </Search>
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        style={{ width: '100%', marginBottom: 90 }}
+        showsVerticalScrollIndicator={false}
+      >
+        <Container>
+          <Header>
+            <Title>Search</Title>
+            <Search>
+              <Input
+                autoCorrect={false}
+                autoCapitalize="words"
+                autoCompleteType="off"
+              />
+              <Feacther name="search" size={20} />
+            </Search>
 
-          <Filter>
-            <Feacther name="filter" size={24} color="#99879D" />
-            <FilterText>Filtros</FilterText>
-          </Filter>
-        </Header>
+            <Filter>
+              <Feacther name="filter" size={24} color="#99879D" />
+              <FilterText>Filtros</FilterText>
+            </Filter>
+          </Header>
 
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          style={{ width: '100%', marginBottom: 90, marginTop: 25 }}
-          showsVerticalScrollIndicator={false}
-        >
           <Card />
           <Card />
           <Card />
-        </ScrollView>
-      </Container>
+        </Container>
+      </ScrollView>
       <Footer routeName="dasboard" />
     </>
   );

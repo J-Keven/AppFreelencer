@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState, useContext } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { ImageBackground, TextInput, ScrollView, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { FormHandles } from '@unform/core';
@@ -30,7 +30,7 @@ const SignIn: React.FC = () => {
   const InputEmailRef = useRef<TextInput>(null);
   const InputPasswordRef = useRef<TextInput>(null);
 
-  const { signin } = useAuth();
+  const { signIn } = useAuth();
   const handleSubmitForm = useCallback(
     async (data: UserCredentils) => {
       try {
@@ -47,9 +47,7 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-        await signin(data);
-
-        // navigate.navigate()
+        await signIn(data);
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           const errorFormatted = formatErrorsValidate(error);
@@ -62,7 +60,7 @@ const SignIn: React.FC = () => {
         }
       }
     },
-    [signin],
+    [signIn],
   );
 
   return (

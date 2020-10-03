@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacityProps, TouchableOpacity } from 'react-native';
-import { Container, IconFeather } from './style';
+import { IconFeather } from './style';
 
 interface IconProps extends TouchableOpacityProps {
   iconName: string;

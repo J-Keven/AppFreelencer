@@ -29,6 +29,7 @@ export const Search = styled.View`
   box-shadow: 2px 2px 2px black;
   margin-top: 22px;
 `;
+
 export const Input = styled.TextInput`
   flex: 1;
   font-family: 'PublicSans-Medium';
@@ -39,7 +40,9 @@ export const Filter = styled.View`
   flex-direction: row;
   align-items: center;
   margin-top: 32px;
+  margin-bottom: 25px;
 `;
+
 export const FilterText = styled.Text`
   font-family: 'PublicSans-Regular';
   font-size: 16px;

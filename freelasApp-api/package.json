@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev:server": "ts-node-dev  --transpile-only --ignore-watch node_module  src/server.ts",
+    "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
     "start": "yarn build && node dist/server.js",
     "typeorm": "ts-node-dev -r tsconfig-paths/register node_modules/typeorm/cli.js"
   },
@@ -19,6 +19,7 @@
     "@types/express": "^4.17.8",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/multer": "^1.4.4",
+    "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.2.0",
     "eslint": "6.8.0",
@@ -29,6 +30,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.1.2",
     "ts-node-dev": "^1.0.0-pre.63",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^4.0.3"
   },
   "dependencies": {
@@ -39,6 +41,7 @@
     "pg": "^8.3.3",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.3.0",
-    "typeorm": "^0.2.26"
+    "typeorm": "^0.2.26",
+    "uuid": "^8.3.1"
   }
 }

@@ -2,6 +2,7 @@ import { getRepository } from 'typeorm';
 import { injectable, inject } from 'tsyringe';
 import Users from '../models/Users';
 import ITokenProvider from '../providers/TokenProvider/model/ITokenProvider';
+import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
 interface IRequestDTO {
   firstName: string;
@@ -9,23 +10,35 @@ interface IRequestDTO {
   email: string;
   password: string;
 }
+
 interface IResponseDTO {
   user: Users;
   token: string;
 }
+
 @injectable()
 class CreateUserServece {
   private tokenProvider: ITokenProvider;
 
+  private hashProvider: IHashProvider;
+
   constructor(
     @inject('TokenProvider')
     tokenProvider: ITokenProvider,
+
+    @inject('HashProvider')
+    hashProvider: IHashProvider,
   ) {
     this.tokenProvider = tokenProvider;
+    this.hashProvider = hashProvider;
   }
 
-  public async execute(userData: IRequestDTO): Promise<IResponseDTO> {
-    const { email } = userData;
+  public async execute({
+    email,
+    firstName,
+    lastName,
+    password,
+  }: IRequestDTO): Promise<IResponseDTO> {
     const userRepository = getRepository(Users);
 
     const usersExists = await userRepository.findOne({
@@ -36,7 +49,13 @@ class CreateUserServece {
       throw new Error('Email address already used');
     }
 
-    const user = userRepository.create(userData);
+    const hashPassword = await this.hashProvider.create(password);
+    const user = userRepository.create({
+      email,
+      firstName,
+      lastName,
+      password: hashPassword,
+    });
 
     await userRepository.save(user);
 

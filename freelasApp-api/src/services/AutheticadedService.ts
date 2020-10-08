@@ -2,6 +2,7 @@ import { getRepository } from 'typeorm';
 import { injectable, inject } from 'tsyringe';
 import Users from '../models/Users';
 import ITokenProvider from '../providers/TokenProvider/model/ITokenProvider';
+import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
 interface IRequestDTO {
   email: string;
@@ -17,11 +18,17 @@ interface IResponse {
 class AutheticatedServece {
   private tokenProvider: ITokenProvider;
 
+  private hashProvider: IHashProvider;
+
   constructor(
     @inject('TokenProvider')
     tokenProvider: ITokenProvider,
+
+    @inject('HashProvider')
+    hashProvider: IHashProvider,
   ) {
     this.tokenProvider = tokenProvider;
+    this.hashProvider = hashProvider;
   }
 
   public async execute({ email, password }: IRequestDTO): Promise<IResponse> {
@@ -33,7 +40,13 @@ class AutheticatedServece {
     if (!user) {
       throw new Error('Incorrect Email/Password combination');
     }
-    if (user.password !== password) {
+
+    const passworIsEqualHash = await this.hashProvider.compare({
+      payload: password,
+      hash: user.password,
+    });
+
+    if (!passworIsEqualHash) {
       throw new Error('Incorrect Email/Password combination');
     }
 

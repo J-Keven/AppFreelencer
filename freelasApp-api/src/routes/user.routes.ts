@@ -20,4 +20,5 @@ userRoutes.post('/', async (req, res) => {
 userRoutes.patch('/', upload.single('avatar'), async (req, res) => {
   return res.json('ok');
 });
+
 export default userRoutes;

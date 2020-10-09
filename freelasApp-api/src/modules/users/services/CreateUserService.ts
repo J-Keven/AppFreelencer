@@ -52,6 +52,7 @@ class CreateUserServece {
     }
 
     const hashPassword = await this.hashProvider.create(password);
+
     const user = await this.userRepository.create({
       email,
       firstName,

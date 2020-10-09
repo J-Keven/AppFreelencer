@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+import IUserRepository from '@modules/users/repositories/IUserRepository';
 import Freelas from '../infra/typeorm/entities/Freelas';
 import IFreelaRepository from '../repositories/IFreelaRepository';
 
@@ -13,11 +14,15 @@ interface IRequestDTO {
 class CreateFreelaService {
   private freelaRepository: IFreelaRepository;
 
+  private userRepository: IUserRepository;
+
   constructor(
     @inject('FreelaRepository')
     freelaRepository: IFreelaRepository,
+    userRepository: IUserRepository,
   ) {
     this.freelaRepository = freelaRepository;
+    this.userRepository = userRepository;
   }
 
   public async execute({
@@ -26,6 +31,12 @@ class CreateFreelaService {
     description,
     price,
   }: IRequestDTO): Promise<Freelas> {
+    const user = await this.userRepository.findById(user_id);
+
+    if (!user) {
+      throw Error('User not found');
+    }
+
     const freela = await this.freelaRepository.create({
       user_id,
       title,

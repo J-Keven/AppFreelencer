@@ -5,6 +5,11 @@ import IUserRepository from '../IUserRepository';
 class FakeUserRepository implements IUserRepository {
   private userRepository: Users[] = [];
 
+  public async findById(id: string): Promise<Users | undefined> {
+    const user = this.userRepository.find(userItem => userItem.id === id);
+    return user;
+  }
+
   public async findByEmail(email: string): Promise<Users | undefined> {
     const user = this.userRepository.find(userItem => userItem.email === email);
     return user;

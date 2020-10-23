@@ -1,5 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 import IUserRepository from '@modules/users/repositories/IUserRepository';
+import AppError from '@shared/errors/AppError';
 import Freelas from '../infra/typeorm/entities/Freelas';
 import IFreelaRepository from '../repositories/IFreelaRepository';
 
@@ -34,7 +35,7 @@ class CreateFreelaService {
     const user = await this.userRepository.findById(user_id);
 
     if (!user) {
-      throw Error('User not found');
+      throw new AppError('User not found');
     }
 
     const freela = await this.freelaRepository.create({

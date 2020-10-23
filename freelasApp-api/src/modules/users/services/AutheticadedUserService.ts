@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+import AppError from '@shared/errors/AppError';
 import Users from '../infra/typeorm/entities/Users';
 import ITokenProvider from '../infra/providers/TokenProvider/model/ITokenProvider';
 import IHashProvider from '../infra/providers/HashProvider/models/IHashProvider';
@@ -41,7 +42,7 @@ class AutheticatedServece {
     const user = await this.userRepository.findByEmail(email);
 
     if (!user) {
-      throw new Error('Incorrect Email/Password combination');
+      throw new AppError('Incorrect Email/Password combination', 401);
     }
 
     const passworIsEqualHash = await this.hashProvider.compare({
@@ -50,7 +51,7 @@ class AutheticatedServece {
     });
 
     if (!passworIsEqualHash) {
-      throw new Error('Incorrect Email/Password combination');
+      throw new AppError('Incorrect Email/Password combination', 401);
     }
 
     const token = await this.tokenProvider.generete(user);

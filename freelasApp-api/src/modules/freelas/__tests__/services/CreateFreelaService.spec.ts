@@ -3,6 +3,7 @@ import IFreelaRepository from '@modules/freelas/repositories/IFreelaRepository';
 import CreateFreelaService from '@modules/freelas/services/CreateFreelaService';
 import IUserRepository from '@modules/users/repositories/IUserRepository';
 import FakeUserRepository from '@modules/users/repositories/fake/FakeUserRepository';
+import AppError from '@shared/errors/AppError';
 
 let fakeFreelaRepository: IFreelaRepository;
 let fakeUserRepository: IUserRepository;
@@ -50,6 +51,6 @@ describe('CreateFreela', () => {
         description: 'developme a new application',
         price: 100,
       }),
-    ).rejects.toThrowError();
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

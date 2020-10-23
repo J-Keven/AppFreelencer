@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { container } from 'tsyringe';
-import AuthenticatedService from '@modules/users/services/AutheticadedService';
+import AuthenticatedService from '@modules/users/services/AutheticadedUserService';
 
 const sessionRutes = Router();
 

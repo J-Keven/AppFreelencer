@@ -5,6 +5,7 @@ import ITokenProvider from '@modules/users/infra/providers/TokenProvider/model/I
 import IHashProvider from '@modules/users/infra/providers/HashProvider/models/IHashProvider';
 import FakeHashProvider from '@modules/users/infra/providers/HashProvider/fake/FakeHashProvider';
 import FakeTokenProvider from '@modules/users/infra/providers/TokenProvider/fake/FakeTokenProvider';
+import AppError from '@shared/errors/AppError';
 
 let fakeUserRepository: IUserRepository;
 let fakeTokenProvider: ITokenProvider;
@@ -49,6 +50,6 @@ describe('CreateUser', () => {
         email: 'johndoe@example.com',
         password: '123456',
       }),
-    ).rejects.toThrowError();
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

@@ -3,11 +3,17 @@ import Users from '@modules/users/infra/typeorm/entities/Users';
 import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 import IUserRepository from '@modules/users/repositories/IUserRepository';
 
-class FakeUserRepository implements IUserRepository {
+class UserRepository implements IUserRepository {
   private ormRepository: Repository<Users>;
 
   constructor() {
     this.ormRepository = getRepository(Users);
+  }
+
+  public async findById(id: string): Promise<Users | undefined> {
+    const user = await this.ormRepository.findOne(id);
+
+    return user;
   }
 
   public async findByEmail(email: string): Promise<Users | undefined> {
@@ -41,4 +47,4 @@ class FakeUserRepository implements IUserRepository {
   }
 }
 
-export default FakeUserRepository;
+export default UserRepository;

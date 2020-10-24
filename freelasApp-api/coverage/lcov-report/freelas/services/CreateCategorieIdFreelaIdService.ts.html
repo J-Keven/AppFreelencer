@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for freelas/services/CreateFreelaService.ts</title>
+    <title>Code coverage report for freelas/services/CreateCategorieIdFreelaIdService.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">freelas/services</a> CreateFreelaService.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">freelas/services</a> CreateCategorieIdFreelaIdService.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>55/55</span>
+                <span class='fraction'>57/57</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">68.25% </span>
+                <span class="strong">69.7% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>43/63</span>
+                <span class='fraction'>46/66</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>55/55</span>
+                <span class='fraction'>57/57</span>
             </div>
         
             
@@ -112,7 +112,9 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -132,96 +134,100 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { injectable, inject } from 'tsyringe';
-import IUserRepository from '@modules/users/repositories/IUserRepository';
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { inject, injectable } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
-import Freelas from '../infra/typeorm/entities/Freelas';
+import CategorieIdFreelaId from '../infra/typeorm/entities/CategorieIDFreelaId';
+import ICategorieIdFreelaIdRepository from '../repositories/ICategorieIdFreelaIdRepository';
 import IFreelaRepository from '../repositories/IFreelaRepository';
+import ICategoriesRepository from '../repositories/ICategoriesRepository';
 &nbsp;
-interface IRequestDTO {
-  user_id: string;
-  title: string;
-  description: string;
-  price: number;
+interface IRequest {
+  categorie_id: string;
+  freela_id: string;
 }
 &nbsp;
 @injectable()
-class CreateFreelaService {
-  private freelaRepository: IFreelaRepository;
+class CreateCategorieIdFreelaIdService {
+  private categorieIdFreelaIdRepository: ICategorieIdFreelaIdRepository;
 &nbsp;
-  private userRepository: IUserRepository;
+  private freelasRepository: IFreelaRepository;
+&nbsp;
+  private categoriesRepository: ICategoriesRepository;
 &nbsp;
   constructor(
+    @inject('CategorieIdFreelaIdRepository')
+    categorieIdFreelaIdRepository: ICategorieIdFreelaIdRepository,
     @inject('FreelaRepository')
-    freelaRepository: IFreelaRepository,
-    @inject('UserRepository')
-    userRepository: IUserRepository,
+    freelasRepository: IFreelaRepository,
+    @inject('CategoriesRepository')
+    categoriesRepository: ICategoriesRepository,
   ) {
-    this.freelaRepository = freelaRepository;
-    this.userRepository = userRepository;
+    this.categorieIdFreelaIdRepository = categorieIdFreelaIdRepository;
+    this.freelasRepository = freelasRepository;
+    this.categoriesRepository = categoriesRepository;
   }
 &nbsp;
   public async execute({
-    user_id,
-    title,
-    description,
-    price,
-  }: IRequestDTO): Promise&lt;Freelas&gt; {
-    const user = await this.userRepository.findById(user_id);
-&nbsp;
-    if (!user) {
-      throw new AppError('User not found');
+    categorie_id,
+    freela_id,
+  }: IRequest): Promise&lt;CategorieIdFreelaId&gt; {
+    const freela = await this.freelasRepository.findById(freela_id);
+    if (!freela) {
+      throw new AppError('I didnt find any freela with this id');
     }
 &nbsp;
-    const freela = await this.freelaRepository.create({
-      user_id,
-      title,
-      description,
-      price,
-    });
-&nbsp;
-    await this.freelaRepository.save(freela);
-&nbsp;
-    return freela;
+    const categorie = await this.categoriesRepository.findById(categorie_id);
+    if (!categorie) {
+      throw new AppError('I didnt find any categorie with this id');
+    }
+    const categorieIdFreelaId = await this.categorieIdFreelaIdRepository.create(
+      {
+        categorie_id,
+        freela_id,
+      },
+    );
+    return categorieIdFreelaId;
   }
 }
 &nbsp;
-export default CreateFreelaService;<span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
+export default CreateCategorieIdFreelaIdService;<span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

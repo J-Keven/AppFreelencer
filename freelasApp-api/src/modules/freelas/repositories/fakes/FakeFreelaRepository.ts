@@ -6,6 +6,11 @@ import IFreelasRepository from '../IFreelaRepository';
 class FakeFreelasRepository implements IFreelasRepository {
   private freelas: Freelas[] = [];
 
+  public async findById(id: string): Promise<Freelas | undefined> {
+    const freela = this.freelas.find(item => item.id === id);
+    return freela;
+  }
+
   public async create({
     user_id,
     title,

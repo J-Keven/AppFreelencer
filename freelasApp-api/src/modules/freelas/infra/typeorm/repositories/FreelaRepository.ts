@@ -11,6 +11,11 @@ class FreelasRepository implements IFreelasRepository {
     console.log(new Freelas());
   }
 
+  public async findById(id: string): Promise<Freelas | undefined> {
+    const freela = await this.ormRepository.findOne(id);
+    return freela;
+  }
+
   public async create({
     user_id,
     title,

@@ -20,6 +20,7 @@ class CreateFreelaService {
   constructor(
     @inject('FreelaRepository')
     freelaRepository: IFreelaRepository,
+    @inject('UserRepository')
     userRepository: IUserRepository,
   ) {
     this.freelaRepository = freelaRepository;

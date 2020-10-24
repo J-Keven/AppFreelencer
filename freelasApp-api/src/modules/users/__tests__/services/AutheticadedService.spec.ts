@@ -56,4 +56,20 @@ describe('AutheticadedUser', () => {
       }),
     ).rejects.toBeInstanceOf(Apperror);
   });
+
+  it('should be able to create a new session for user if password is incorrect', async () => {
+    const user = await fakeUsersRepository.create({
+      email: 'jonhdoe@example.com',
+      firstName: 'Jonh',
+      lastName: 'Doe',
+      password: '123456',
+    });
+
+    await expect(
+      autheticadedUserService.execute({
+        email: user.email,
+        password: '12345677',
+      }),
+    ).rejects.toBeInstanceOf(Apperror);
+  });
 });

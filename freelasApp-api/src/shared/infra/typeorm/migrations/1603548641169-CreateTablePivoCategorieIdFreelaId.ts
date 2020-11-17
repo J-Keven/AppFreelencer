@@ -63,13 +63,12 @@ export default class CreateTablePivoCategorieIdFreelaId1603548641169
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropForeignKey('categorieIdFreelaId', 'freelaForeingKey');
+
     await queryRunner.dropForeignKey(
       'categorieIdFreelaId',
       'categorieForeingKey',
     );
-
-    await queryRunner.dropForeignKey('categorieIdFreelaId', 'freelaForeingKey');
-
     await queryRunner.dropTable('categorieIdFreelaId');
   }
 }

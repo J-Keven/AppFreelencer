@@ -2,7 +2,7 @@ import IUserRepository from '@modules/users/repositories/IUserRepository';
 import FakeUserRepository from '@modules/users/repositories/fake/FakeUserRepository';
 import CreateUserService from '@modules/users/services/CreateUserService';
 import ITokenProvider from '@modules/users/infra/providers/TokenProvider/model/ITokenProvider';
-import IHashProvider from '@modules/users/infra/providers/HashProvider/models/IHashProvider';
+import IHashProvider from '@modules/users/infra/providers/HashProvider/model/IHashProvider';
 import FakeHashProvider from '@modules/users/infra/providers/HashProvider/fake/FakeHashProvider';
 import FakeTokenProvider from '@modules/users/infra/providers/TokenProvider/fake/FakeTokenProvider';
 import AppError from '@shared/errors/AppError';

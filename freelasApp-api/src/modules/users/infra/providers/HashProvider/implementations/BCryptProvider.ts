@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import IHashPassordProvider from '../models/IHashProvider';
+import IHashPassordProvider from '../model/IHashProvider';
 import ICompareDTO from '../dtos/ICompareDTO';
 
 class BcryptProvider implements IHashPassordProvider {

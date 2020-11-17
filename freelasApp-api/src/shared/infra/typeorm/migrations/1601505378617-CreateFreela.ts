@@ -50,6 +50,8 @@ export default class CreateFreela1601505378617 implements MigrationInterface {
             columnNames: ['user_id'],
             referencedColumnNames: ['id'],
             referencedTableName: 'users',
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
           }),
         ],
       }),

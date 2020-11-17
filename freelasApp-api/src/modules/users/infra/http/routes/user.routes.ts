@@ -1,16 +1,18 @@
 import { Router } from 'express';
 import multer from 'multer';
-import uploadConfigs from '@configs/multer';
+import uploadConfigs from '@configs/uploads';
 import UserController from '../controllers/UserController';
+import UpdateAvatarController from '../controllers/UpdateAvatarController';
 
 const userRoutes = Router();
-const upload = multer(uploadConfigs);
+const upload = multer({
+  storage: uploadConfigs.multer,
+});
 
 const userController = new UserController();
+const updateAvatarController = new UpdateAvatarController();
 userRoutes.post('/', userController.create);
 
-userRoutes.patch('/', upload.single('avatar'), async (req, res) => {
-  return res.json('ok');
-});
+userRoutes.patch('/', upload.single('avatar'), updateAvatarController.index);
 
 export default userRoutes;

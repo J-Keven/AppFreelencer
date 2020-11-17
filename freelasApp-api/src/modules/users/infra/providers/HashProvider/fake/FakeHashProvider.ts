@@ -1,4 +1,4 @@
-import IHashProvider from '../models/IHashProvider';
+import IHashProvider from '../model/IHashProvider';
 import ICompareDTO from '../dtos/ICompareDTO';
 
 class FakeHashProvider implements IHashProvider {

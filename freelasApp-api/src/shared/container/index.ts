@@ -12,7 +12,8 @@ import CategoriesRepository from '@modules/freelas/infra/typeorm/repositories/Ca
 import ICategorieIdFreelaIdRepository from '@modules/freelas/repositories/ICategorieIdFreelaIdRepository';
 import CategorieIdFreelaIdRepository from '@modules/freelas/infra/typeorm/repositories/CategorieIdFreelaIdRepository';
 
-import '@modules/users/infra/providers/index';
+import './providers';
+import '@modules/users/infra/providers';
 
 container.registerSingleton<IUserReposity>('UserRepository', UserRepository);
 

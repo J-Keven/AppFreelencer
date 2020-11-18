@@ -8,6 +8,7 @@ export default class AddFildAvatarToUserTable1605578049733
       new TableColumn({
         name: 'avatar',
         type: 'varchar',
+        isNullable: true,
       }),
     );
   }

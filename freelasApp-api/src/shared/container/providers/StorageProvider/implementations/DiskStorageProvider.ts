@@ -10,11 +10,23 @@ class DiskStorageProvider implements IStorageProvider {
       resolve(tempPath, filename),
       resolve(uploadPath, filename),
     );
+    try {
+      await fs.promises.unlink(resolve(tempPath, filename));
+    } catch (error) {
+      // error
+    }
     return filename;
   }
 
   public async delete(filename: string): Promise<void> {
-    // todoo
+    const filePath = resolve(uploadsConfigs.uploadPath, filename);
+    try {
+      await fs.promises.stat(filePath);
+
+      await fs.promises.unlink(filePath);
+    } catch (err) {
+      throw Error(err);
+    }
   }
 }
 

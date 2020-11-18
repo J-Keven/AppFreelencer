@@ -8,12 +8,12 @@ class UpdateAvatarController {
     const { filename } = request.file;
     const { id } = request.user;
 
-    const user = updateAvatarService.execute({
+    const user = await updateAvatarService.execute({
       filename,
       id,
     });
 
-    return response.status(204).json(user);
+    return response.status(201).json(user);
   }
 }
 

@@ -82,7 +82,7 @@ const Freela: React.FC = () => {
                   navigate.navigate('SendProposal');
                 }}
               >
-                Fazer um proposta
+                Fazer uma proposta
               </Button>
             </MakeProposal>
           </Content>

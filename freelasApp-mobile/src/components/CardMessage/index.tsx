@@ -5,9 +5,17 @@ import { Container, Content, UserMessage, Name, LastMassega } from './styles';
 
 interface CardMessageProps {
   color: string;
+  imageUri: string;
+  name: string;
+  lastMessage: string;
 }
 
-const CardMessage: React.FC<CardMessageProps> = ({ color }) => {
+const CardMessage: React.FC<CardMessageProps> = ({
+  color,
+  imageUri,
+  name,
+  lastMessage,
+}) => {
   return (
     <Container
       background={color}
@@ -18,8 +26,7 @@ const CardMessage: React.FC<CardMessageProps> = ({ color }) => {
       <Content>
         <Image
           source={{
-            uri:
-              'https://avatars2.githubusercontent.com/u/50251304?s=460&u=f3ac62e5d926b4c8f2a8bc93e548ea7443ff5dbb&v=4',
+            uri: imageUri,
           }}
           style={{
             width: 56,
@@ -31,8 +38,8 @@ const CardMessage: React.FC<CardMessageProps> = ({ color }) => {
         />
 
         <UserMessage>
-          <Name>Arlene Mckinney</Name>
-          <LastMassega>I have some questions about...</LastMassega>
+          <Name>{name}</Name>
+          <LastMassega>{lastMessage}</LastMassega>
         </UserMessage>
       </Content>
       <Feather name="chevron-right" size={28} color="#99879D" />

@@ -22,7 +22,7 @@ import {
   CategoriesContainer,
 } from './style';
 
-const Card: React.FC = () => {
+const CardFreela: React.FC = () => {
   const navigate = useNavigation();
   return (
     <Container>
@@ -79,4 +79,4 @@ const Card: React.FC = () => {
   );
 };
 
-export default Card;
+export default CardFreela;

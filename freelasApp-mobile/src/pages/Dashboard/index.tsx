@@ -1,7 +1,7 @@
 import React from 'react';
 import Feacther from 'react-native-vector-icons/Feather';
 import { ScrollView } from 'react-native-gesture-handler';
-import Card from '../../components/Card';
+import CardFreela from '../../components/CardFreela';
 import {
   Container,
   Header,
@@ -40,9 +40,9 @@ const Dashboard: React.FC = () => {
             </Filter>
           </Header>
 
-          <Card />
-          <Card />
-          <Card />
+          <CardFreela />
+          <CardFreela />
+          <CardFreela />
         </Container>
       </ScrollView>
       <Footer routeName="dasboard" />

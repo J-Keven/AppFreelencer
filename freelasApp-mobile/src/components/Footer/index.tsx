@@ -25,7 +25,9 @@ const Footer: React.FC<FooterProps> = ({ routeName }) => {
       <Icon
         iconName="message-square"
         isTheRoute={routeName === 'messages'}
-        onPress={() => {}}
+        onPress={() => {
+          navigate.navigate('Messages');
+        }}
       />
       <Icon
         iconName="user"

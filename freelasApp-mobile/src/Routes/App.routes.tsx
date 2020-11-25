@@ -5,6 +5,7 @@ import Dashboard from '../pages/Dashboard';
 import Freela from '../pages/Freela';
 import SendProposal from '../pages/SendProposal';
 import Profile from '../pages/Profile';
+import Messages from '../pages/Messages';
 
 const App = createStackNavigator();
 const AppRoutes: React.FC = () => (
@@ -14,6 +15,7 @@ const AppRoutes: React.FC = () => (
       <App.Screen name="Freela" component={Freela} />
       <App.Screen name="SendProposal" component={SendProposal} />
       <App.Screen name="Profile" component={Profile} />
+      <App.Screen name="Messages" component={Messages} />
     </App.Navigator>
   </NavigationContainer>
 );

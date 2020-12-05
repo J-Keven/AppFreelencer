@@ -21,6 +21,7 @@
 
 <p align="center">
   <a href="#rocket-sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#fire-como-usar">Techs</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#fire-como-usar">Como Usar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-como-contribuir">Como Contribuir</a>&nbsp;&nbsp;&nbsp;
   <!-- <a href="#memo-licença">Licença</a> -->
@@ -28,6 +29,17 @@
 
 ## 💈Sobre
 O FreelasApp é uma aplicação para auxiliar pessoas ou empresas que estão necessitando de profissionais para desenvolver um determinado projeto ou serviço e, também, ajudar pessoas que trabalham de forma autônoma ou querem fazer um dinheiro extra a encontrar novos projetos ou serviços para desenvolver.💜🚀
+## Techs
+Esse projeto foi desenvolvido utilizando as seguintes tecnologias e ferramentas:
+<code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png"></code> <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png"></code> <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/typescript/typescript.png"></code> <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png"></code> <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react-native/react-native.png"></code> <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/postgresql/postgresql.png"></code> <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/mongodb/mongodb.png"></code> <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/docker/docker.png"></code>
+
+- [Axios](https://github.com/axios/axios)
+- [eslint](https://eslint.org/docs/user-guide/configuring)
+- [Jest](https://jestjs.io/docs/en/getting-started)
+- [prettier](https://prettier.io/docs/en/options.html)
+- [styled-components](https://styled-components.com/)
+- [Typeorm](https://typeorm.io/#/)
+- [unform](https://unform.dev/)
 
 ## ⚡ Executando o Projeto
 

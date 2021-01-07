@@ -1,9 +1,0 @@
-node_modules
-
-ormconfig.json
-
-
-!temp/.gitkeep
-!temp/uploads/.gitkeep
-
-temp
